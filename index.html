@@ -14,6 +14,30 @@
             padding: 20px;
         }
 
+        /* Dark Mode */
+        .dark-mode {
+            background: #1c1c1c;
+            color: white;
+        }
+
+        /* Small toggle button styling */
+        #darkModeToggle {
+            position: fixed;
+            top: 10px;
+            right: 15px;
+            background: #444;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #darkModeToggle:hover {
+            background: #666;
+        }
+
         /* Card Hover Effect */
         .card:hover {
             transform: scale(1.05);
@@ -31,12 +55,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        /* Dark Mode */
-        .dark-mode {
-            background: #1c1c1c;
-            color: white;
         }
 
         /* Project Cards */
@@ -61,6 +79,9 @@
     </style>
 </head>
 <body class="container fade-in">
+    <!-- Dark Mode Toggle Button -->
+    <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -83,11 +104,6 @@
         <h1>Welcome to My Cybersecurity Portfolio</h1>
         <p>Showcasing my security projects and research.</p>
     </header>
-
-    <!-- Dark Mode Toggle -->
-    <section class="text-center mb-4">
-        <button class="btn btn-warning" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    </section>
 
     <!-- Project Filter -->
     <section class="text-center mb-4">
@@ -136,6 +152,8 @@
         // Toggle Dark Mode
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
+            let button = document.getElementById("darkModeToggle");
+            button.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
         }
 
         // Show Notes Section
