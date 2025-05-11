@@ -22,17 +22,18 @@
 
         /* Small toggle button styling */
         #darkModeToggle {
-            position: fixed;
-            top: 10px;
-            right: 15px;
-            background: #444;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
+    position: fixed;
+    top: 20px; /* Adjust the vertical position */
+    right: 20px; /* Adjust the horizontal position */
+    z-index: 1000; /* Bring it in front of other elements */
+    background: #444;
+    color: white;
+    border: none;
+    padding: 10px 15px; /* Add some padding for better aesthetics */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer;
+    font-size: 14px;
+}
 
         #darkModeToggle:hover {
             background: #666;
