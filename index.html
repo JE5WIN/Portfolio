@@ -22,18 +22,18 @@
 
         /* Small toggle button styling */
         #darkModeToggle {
-    position: fixed;
-    top: 20px; /* Adjust the vertical position */
-    right: 20px; /* Adjust the horizontal position */
-    z-index: 1000; /* Bring it in front of other elements */
-    background: #444;
-    color: white;
-    border: none;
-    padding: 10px 15px; /* Add some padding for better aesthetics */
-    border-radius: 5px; /* Add rounded corners */
-    cursor: pointer;
-    font-size: 14px;
-}
+            position: fixed;
+            top: 20px; /* Adjust the vertical position */
+            right: 20px; /* Adjust the horizontal position */
+            z-index: 1000; /* Bring it in front of other elements */
+            background: #444;
+            color: white;
+            border: none;
+            padding: 10px 15px; /* Add some padding for better aesthetics */
+            border-radius: 5px; /* Add rounded corners */
+            cursor: pointer;
+            font-size: 14px;
+        }
 
         #darkModeToggle:hover {
             background: #666;
@@ -95,6 +95,8 @@
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <!-- CV Link -->
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/JE5WIN/Portfolio/blob/main/CV.pdf" target="_blank">My CV</a></li>
                 </ul>
             </div>
         </div>
@@ -151,20 +153,20 @@
 
     <script>
         // Toggle Dark Mode
-function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
-    let button = document.getElementById("darkModeToggle");
-    button.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
-    localStorage.setItem('darkMode', document.body.classList.contains("dark-mode"));
-}
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            let button = document.getElementById("darkModeToggle");
+            button.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+            localStorage.setItem('darkMode', document.body.classList.contains("dark-mode"));
+        }
 
-// Apply saved theme on page load
-window.onload = function () {
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add("dark-mode");
-        document.getElementById("darkModeToggle").textContent = "☀️ Light Mode";
-    }
-};
+        // Apply saved theme on page load
+        window.onload = function () {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add("dark-mode");
+                document.getElementById("darkModeToggle").textContent = "☀️ Light Mode";
+            }
+        };
 
         // Show Notes Section
         function showNotes() {
