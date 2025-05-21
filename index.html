@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jeswin P. George | Cybersecurity Portfolio</title>
-    <!-- Bootstrap CSS and FontAwesome -->
+    <!-- Bootstrap & FontAwesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Favicon -->
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/security.svg" type="image/svg+xml">
     <style>
-        /* Background Styling */
         body {
             background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
             color: white;
@@ -33,26 +32,32 @@
         /* Toggle button styling */
         #darkModeToggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: #444;
-            color: white;
+            top: 12px;
+            right: 16px;
+            z-index: 2000;
+            background: rgba(68,68,68,0.92);
+            color: #fff;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 10px 14px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: background 0.3s, opacity 0.3s;
+            opacity: 1;
+        }
+        #darkModeToggle.scrolled {
+            opacity: 0.5;
+            background: rgba(44,44,44,0.7);
         }
         #darkModeToggle:hover {
+            opacity: 1;
             background: #666;
         }
-        /* Card Hover Effect */
         .card:hover {
             transform: scale(1.05);
             transition: 0.3s;
         }
-        /* Fade-in Animation */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -64,11 +69,9 @@
                 transform: translateY(0);
             }
         }
-        /* Project Cards */
         .project-card {
             margin-bottom: 20px;
         }
-        /* Footer Styling */
         footer {
             background: rgba(0,0,0,0.8);
             text-align: center;
@@ -85,13 +88,11 @@
         .footer-links a:hover {
             text-decoration: underline;
         }
-        /* Responsive adjustments */
         @media (max-width: 600px) {
             body { padding: 10px; }
             .project-card { margin-bottom: 15px; }
             #darkModeToggle { top: 10px; right: 10px; }
         }
-        /* Profile Image */
         .profile-pic {
             width: 100px;
             height: 100px;
@@ -100,12 +101,10 @@
             border: 3px solid #8fd3f4;
             margin-bottom: 10px;
         }
-        /* Badge styling */
         .badge {
             margin-right: 4px;
             margin-bottom: 2px;
         }
-        /* Blog/Notes styling */
         .note-card {
             margin-bottom: 16px;
             background: #23272b;
@@ -119,12 +118,14 @@
 </head>
 <body class="container fade-in">
     <!-- Dark Mode Toggle Button -->
-    <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    <button id="darkModeToggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+      🌙
+    </button>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNavbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i class="fa-solid fa-shield-halved"></i> JESWIN P GEORGE</a>
+            <a class="navbar-brand" href="#"><i class="fa-solid fa-shield-halved"></i> Jeswin P. George</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -168,7 +169,6 @@
             <span class="badge bg-secondary">Burp Suite</span>
             <span class="badge bg-dark">Nmap</span>
             <span class="badge bg-secondary">CTF</span>
-            <!-- Add more badges for your skills/certs -->
         </div>
         <div>
             <strong>Certifications:</strong> <span class="badge bg-info text-dark">CompTIA Security+ (in progress)</span>
@@ -237,7 +237,6 @@
     </section>
 
     <!-- Project Modals -->
-    <!-- Modal Project 1 -->
     <div class="modal fade" id="modalProject1" tabindex="-1" aria-labelledby="modalProject1Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-white">
@@ -258,7 +257,6 @@
         </div>
       </div>
     </div>
-    <!-- Modal Project 2 -->
     <div class="modal fade" id="modalProject2" tabindex="-1" aria-labelledby="modalProject2Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-white">
@@ -279,7 +277,6 @@
         </div>
       </div>
     </div>
-    <!-- Modal Project 3 -->
     <div class="modal fade" id="modalProject3" tabindex="-1" aria-labelledby="modalProject3Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-white">
@@ -326,7 +323,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Add more notes as needed -->
         </div>
     </section>
 
@@ -352,15 +348,12 @@
             document.body.classList.toggle("dark-mode");
             document.getElementById("mainNavbar").classList.toggle("navbar-dark");
             document.getElementById("mainNavbar").classList.toggle("bg-dark");
-            // Toggle all cards and note cards
             document.querySelectorAll('.card').forEach(card => {
                 card.classList.toggle('bg-dark');
                 card.classList.toggle('text-white');
             });
-            // Update button text
             let button = document.getElementById("darkModeToggle");
-            button.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
-            // Save preference
+            button.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
             localStorage.setItem('darkMode', document.body.classList.contains("dark-mode"));
         }
         // Apply saved theme on page load
@@ -371,7 +364,7 @@
                 document.querySelectorAll('.card').forEach(card => {
                     card.classList.add('bg-dark', 'text-white');
                 });
-                document.getElementById("darkModeToggle").textContent = "☀️ Light Mode";
+                document.getElementById("darkModeToggle").textContent = "☀️";
             }
         };
         // Project Filtering
@@ -385,6 +378,15 @@
                 }
             });
         }
+        // Fade the dark mode toggle on scroll
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('darkModeToggle');
+            if (window.scrollY > 60) {
+                btn.classList.add('scrolled');
+            } else {
+                btn.classList.remove('scrolled');
+            }
+        });
     </script>
 </body>
 </html>
