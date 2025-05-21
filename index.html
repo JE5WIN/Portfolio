@@ -1,77 +1,390 @@
-<!-- Add this in your <head> for favicon -->
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/security.svg" type="image/svg+xml">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jeswin P. George | Cybersecurity Portfolio</title>
+    <!-- Bootstrap CSS and FontAwesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/security.svg" type="image/svg+xml">
+    <style>
+        /* Background Styling */
+        body {
+            background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+            transition: background 0.5s, color 0.5s;
+        }
+        /* Dark Mode */
+        .dark-mode {
+            background: #1c1c1c !important;
+            color: #eee !important;
+        }
+        .dark-mode .navbar, .dark-mode .card {
+            background: #23272b !important;
+            color: #fff !important;
+        }
+        .dark-mode .navbar-brand, .dark-mode .nav-link {
+            color: #fff !important;
+        }
+        /* Toggle button styling */
+        #darkModeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #444;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        #darkModeToggle:hover {
+            background: #666;
+        }
+        /* Card Hover Effect */
+        .card:hover {
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Project Cards */
+        .project-card {
+            margin-bottom: 20px;
+        }
+        /* Footer Styling */
+        footer {
+            background: rgba(0,0,0,0.8);
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            color: #ccc;
+            margin-top: 40px;
+        }
+        .footer-links a {
+            color: #8fd3f4;
+            margin: 0 8px;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .project-card { margin-bottom: 15px; }
+            #darkModeToggle { top: 10px; right: 10px; }
+        }
+        /* Profile Image */
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #8fd3f4;
+            margin-bottom: 10px;
+        }
+        /* Badge styling */
+        .badge {
+            margin-right: 4px;
+            margin-bottom: 2px;
+        }
+        /* Blog/Notes styling */
+        .note-card {
+            margin-bottom: 16px;
+            background: #23272b;
+            color: #eee;
+        }
+        .dark-mode .note-card {
+            background: #141619;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="container fade-in">
+    <!-- Dark Mode Toggle Button -->
+    <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
 
-<!-- Navbar: Make it dark-aware -->
-<nav class="navbar navbar-expand-lg" id="mainNavbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="fa-solid fa-shield-halved"></i> Jeswin P. George</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/jeswin-p-george-62a6518a/">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://github.com/JE5WIN/Portfolio/blob/main/CV.pdf" target="_blank">Resume</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNavbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fa-solid fa-shield-halved"></i> Jeswin P. George</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#notes-section">Write-ups</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/jeswin-p-george-62a6518a/" target="_blank">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/JE5WIN/Portfolio/blob/main/CV.pdf" target="_blank">Resume</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<!-- Header: Add name, tagline, and photo -->
-<header class="text-center my-4">
-  <img src="your-photo.jpg" alt="Jeswin P. George" class="rounded-circle mb-2" style="width: 100px; height: 100px;">
-  <h1>Jeswin P. George</h1>
-  <h5 class="text-info">Cybersecurity Enthusiast & Threat Hunter</h5>
-  <p>Specializing in network analysis, scripting, and hands-on security research.</p>
-</header>
+    <!-- Header: Name, Tagline, Photo -->
+    <header class="text-center my-4">
+        <img src="your-photo.jpg" alt="Jeswin P. George" class="profile-pic">
+        <h1>Jeswin P. George</h1>
+        <h5 class="text-info">Cybersecurity Enthusiast & Threat Hunter</h5>
+        <p>Specializing in network analysis, scripting, and hands-on security research.</p>
+        <div>
+            <a href="https://github.com/JE5WIN" target="_blank" class="btn btn-outline-light btn-sm mx-1"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/jeswin-p-george-62a6518a/" target="_blank" class="btn btn-outline-info btn-sm mx-1"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="mailto:your.email@example.com" class="btn btn-outline-success btn-sm mx-1"><i class="fa fa-envelope"></i> Email</a>
+        </div>
+    </header>
 
-<!-- About Me Section -->
-<section id="about" class="my-5">
-  <h2><i class="fa-solid fa-user-shield"></i> About Me</h2>
-  <p>
-    I’m a cybersecurity student passionate about ethical hacking, network defense, and automation. I enjoy capturing the flag (CTF) challenges, analyzing network traffic, and building tools to make security easier. 
-  </p>
-  <div>
-    <span class="badge bg-success">Python</span>
-    <span class="badge bg-primary">Wireshark</span>
-    <span class="badge bg-warning text-dark">Bash</span>
-    <span class="badge bg-danger">Linux</span>
-    <span class="badge bg-info text-dark">Security+</span>
-    <!-- Add more badges for your skills/certs -->
-  </div>
-</section>
-
-<!-- Projects Section: Add badges, links, and more detail -->
-<section id="projects" class="row">
-  <div class="col-md-6 project-card networking">
-    <div class="card bg-dark text-white">
-      <img src="screenshots/wireshark-analysis.png" class="card-img-top" alt="Wireshark Analysis">
-      <div class="card-body">
-        <h5 class="card-title"><i class="fa-solid fa-network-wired"></i> Network Analysis with Wireshark</h5>
-        <p class="card-text">
-          Analyzed packet flows, detected anomalies, and documented security incidents.
-          <span class="badge bg-primary">Wireshark</span>
-          <span class="badge bg-secondary">Network</span>
+    <!-- About Me Section -->
+    <section id="about" class="my-5">
+        <h2><i class="fa-solid fa-user-shield"></i> About Me</h2>
+        <p>
+            I’m a cybersecurity student passionate about ethical hacking, network defense, automation, and continuous learning. I enjoy capturing the flag (CTF) challenges, analyzing network traffic, and building tools to make security easier. My goal is to contribute to a safer digital world.
         </p>
-        <a href="https://github.com/JE5WIN/wireshark-analysis" class="btn btn-outline-light btn-sm" target="_blank">View Code</a>
+        <div class="mb-2">
+            <span class="badge bg-success">Python</span>
+            <span class="badge bg-primary">Wireshark</span>
+            <span class="badge bg-warning text-dark">Bash</span>
+            <span class="badge bg-danger">Linux</span>
+            <span class="badge bg-info text-dark">Security+</span>
+            <span class="badge bg-secondary">Burp Suite</span>
+            <span class="badge bg-dark">Nmap</span>
+            <span class="badge bg-secondary">CTF</span>
+            <!-- Add more badges for your skills/certs -->
+        </div>
+        <div>
+            <strong>Certifications:</strong> <span class="badge bg-info text-dark">CompTIA Security+ (in progress)</span>
+        </div>
+    </section>
+
+    <!-- Project Filter -->
+    <section class="text-center mb-4">
+        <button class="btn btn-info" onclick="showProjects('networking')">Networking</button>
+        <button class="btn btn-success" onclick="showProjects('scripting')">Scripting</button>
+        <button class="btn btn-secondary" onclick="showProjects('all')">Show All</button>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="row">
+        <!-- Project 1 -->
+        <div class="col-md-6 project-card networking">
+            <div class="card bg-dark text-white">
+                <img src="screenshots/wireshark-analysis.png" class="card-img-top" alt="Wireshark Analysis">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-network-wired"></i> Network Analysis with Wireshark</h5>
+                    <p class="card-text">
+                        Analyzed packet flows, detected anomalies, and documented security incidents.<br>
+                        <span class="badge bg-primary">Wireshark</span>
+                        <span class="badge bg-secondary">Network</span>
+                        <span class="badge bg-info text-dark">Threat Detection</span>
+                    </p>
+                    <a href="https://github.com/JE5WIN/wireshark-analysis" class="btn btn-outline-light btn-sm" target="_blank">View Code</a>
+                    <a href="#modalProject1" data-bs-toggle="modal" class="btn btn-link btn-sm text-info">Read More</a>
+                </div>
+            </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="col-md-6 project-card scripting">
+            <div class="card bg-dark text-white">
+                <img src="screenshots/python-script.png" class="card-img-top" alt="Python Scripting">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-code"></i> Security Automation Scripts</h5>
+                    <p class="card-text">
+                        Automated vulnerability scans and reporting using Python and Bash.<br>
+                        <span class="badge bg-success">Python</span>
+                        <span class="badge bg-warning text-dark">Bash</span>
+                        <span class="badge bg-danger">Linux</span>
+                    </p>
+                    <a href="https://github.com/JE5WIN/security-scripts" class="btn btn-outline-light btn-sm" target="_blank">View Code</a>
+                    <a href="#modalProject2" data-bs-toggle="modal" class="btn btn-link btn-sm text-info">Read More</a>
+                </div>
+            </div>
+        </div>
+        <!-- Project 3 (Sample - Coming Soon) -->
+        <div class="col-md-6 project-card networking">
+            <div class="card bg-dark text-white">
+                <img src="screenshots/ctf-writeup.png" class="card-img-top" alt="CTF Challenge">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-flag"></i> CTF Challenge Writeups</h5>
+                    <p class="card-text">
+                        Solved real-world hacking challenges and documented solutions.<br>
+                        <span class="badge bg-secondary">CTF</span>
+                        <span class="badge bg-info text-dark">Write-up</span>
+                    </p>
+                    <a href="https://github.com/JE5WIN/ctf-writeups" class="btn btn-outline-light btn-sm" target="_blank">See Writeups</a>
+                    <a href="#modalProject3" data-bs-toggle="modal" class="btn btn-link btn-sm text-info">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modals -->
+    <!-- Modal Project 1 -->
+    <div class="modal fade" id="modalProject1" tabindex="-1" aria-labelledby="modalProject1Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalProject1Label">Network Analysis with Wireshark</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Used Wireshark to capture and analyze network traffic, focusing on identifying unusual patterns and potential security threats. Developed reports for detected anomalies and contributed to incident documentation.
+            </p>
+            <ul>
+                <li>Captured live network traffic in real-world environments</li>
+                <li>Applied display and capture filters to isolate suspicious packets</li>
+                <li>Documented findings and suggested mitigations</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="col-md-6 project-card scripting">
-    <div class="card bg-dark text-white">
-      <img src="screenshots/python-script.png" class="card-img-top" alt="Python Scripting">
-      <div class="card-body">
-        <h5 class="card-title"><i class="fa-solid fa-code"></i> Security Automation Scripts</h5>
-        <p class="card-text">
-          Automated vulnerability scans and reporting using Python and Bash.
-          <span class="badge bg-success">Python</span>
-          <span class="badge bg-warning text-dark">Bash</span>
-        </p>
-        <a href="https://github.com/JE5WIN/security-scripts" class="btn btn-outline-light btn-sm" target="_blank">View Code</a>
+    <!-- Modal Project 2 -->
+    <div class="modal fade" id="modalProject2" tabindex="-1" aria-labelledby="modalProject2Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalProject2Label">Security Automation Scripts</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+                Developed scripts in Python and Bash to automate vulnerability scanning, log parsing, and security reporting. Reduced manual effort and improved detection efficiency.
+            </p>
+            <ul>
+                <li>Automated Nmap scans and email alerts for new vulnerabilities</li>
+                <li>Parsed server logs to detect brute-force attempts</li>
+                <li>Generated PDF security reports automatically</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+    <!-- Modal Project 3 -->
+    <div class="modal fade" id="modalProject3" tabindex="-1" aria-labelledby="modalProject3Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalProject3Label">CTF Challenge Writeups</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+                Participated in online Capture the Flag (CTF) competitions, solved security challenges in web, crypto, and pwn, and published detailed write-ups for the community.
+            </p>
+            <ul>
+                <li>Reverse engineered binaries to find vulnerabilities</li>
+                <li>Solved cryptography and steganography puzzles</li>
+                <li>Documented each step for educational sharing</li>
+            </ul>
+            <a href="https://github.com/JE5WIN/ctf-writeups" target="_blank" class="btn btn-sm btn-outline-info mt-2">Visit Writeups Repo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Notes Section -->
+    <section id="notes-section" class="my-5">
+        <h2 class="mb-4"><i class="fa-solid fa-book"></i> Technical Write-ups & Notes</h2>
+        <div class="row">
+            <!-- Example Note 1 -->
+            <div class="col-md-6">
+                <div class="card note-card">
+                    <div class="card-body">
+                        <h5 class="card-title">How to Analyze PCAP Files for Threats</h5>
+                        <p class="card-text">A guide to using Wireshark and tshark to detect malicious activity in captured traffic. Includes examples and filter tips.</p>
+                        <a href="https://github.com/JE5WIN/wireshark-analysis/blob/main/PCAP-Analysis-Guide.md" target="_blank" class="btn btn-outline-info btn-sm">Read Note</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Example Note 2 -->
+            <div class="col-md-6">
+                <div class="card note-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Automating Recon with Bash</h5>
+                        <p class="card-text">Step-by-step tutorial on creating Bash scripts to automate information gathering tasks for penetration testing.</p>
+                        <a href="https://github.com/JE5WIN/security-scripts/blob/main/Recon-Automation.md" target="_blank" class="btn btn-outline-info btn-sm">Read Note</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more notes as needed -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-4">
+        <div>
+            <span class="footer-links">
+                <a href="https://github.com/JE5WIN" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
+                <a href="https://www.linkedin.com/in/jeswin-p-george-62a6518a/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> |
+                <a href="mailto:your.email@example.com"><i class="fa fa-envelope"></i> Email</a>
+            </span>
+        </div>
+        <div>
+            <small>&copy; 2025 Jeswin P. George | Cybersecurity Portfolio</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS & Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle Dark Mode
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            document.getElementById("mainNavbar").classList.toggle("navbar-dark");
+            document.getElementById("mainNavbar").classList.toggle("bg-dark");
+            // Toggle all cards and note cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.toggle('bg-dark');
+                card.classList.toggle('text-white');
+            });
+            // Update button text
+            let button = document.getElementById("darkModeToggle");
+            button.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+            // Save preference
+            localStorage.setItem('darkMode', document.body.classList.contains("dark-mode"));
+        }
+        // Apply saved theme on page load
+        window.onload = function () {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add("dark-mode");
+                document.getElementById("mainNavbar").classList.add("navbar-dark", "bg-dark");
+                document.querySelectorAll('.card').forEach(card => {
+                    card.classList.add('bg-dark', 'text-white');
+                });
+                document.getElementById("darkModeToggle").textContent = "☀️ Light Mode";
+            }
+        };
+        // Project Filtering
+        function showProjects(category) {
+            let projects = document.querySelectorAll('.project-card');
+            projects.forEach(project => {
+                if (category === 'all') {
+                    project.style.display = "block";
+                } else {
+                    project.style.display = project.classList.contains(category) ? 'block' : 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
